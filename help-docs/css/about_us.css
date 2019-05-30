@@ -1,0 +1,31 @@
+.ax_default{
+    font-family:'Arial Normal', 'Arial';
+    font-size: 13px;
+    text-align: center;
+    line-height: normal;
+    font-style: normal;
+    font-weight: 400;
+}
+#u2712_text {
+    border-width: 0px;
+    position: absolute;
+    left: 20px;
+    top: 71px;
+    width: 331px;
+    word-wrap: break-word;
+}
+p{
+    text-align: center;
+}
+#bottomtext{
+    width:100%;
+    height:35px;
+    line-height:35px;
+    background:#ccc;
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    font-size:14px;
+    color:#000;
+    text-align:center;
+}

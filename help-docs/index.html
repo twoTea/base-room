@@ -1,0 +1,99 @@
+﻿<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"/>
+    <title>Help</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dmaku.css?v=20180813">
+</head>
+<style>
+    img{
+        margin: 18px auto;
+    }
+</style>
+
+<body>
+<div>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-4">
+            <dl class="list_dl">
+                <dt class="list_dt">
+                    <span class="_after"></span>
+                    <a href="billing_rules.html">
+                        <p>Info on Charges<img src="images/jb.png" height="14" width="8" align="right"/></p>
+                    </a>
+                    <i class="list_dt_icon"></i>
+                </dt>
+                <dt class="list_dt">
+                    <span class="_after"></span>
+                    <a href="deposit_account.html">
+                        <p>Deposit Info<img src="images/jb.png" height="14" width="8" align="right"/></p>
+                    </a>
+                    <i class="list_dt_icon"></i>
+                </dt>
+                <dt class="list_dt">
+                    <span class="_after"></span>
+                    <a href="user_protocol.html">
+                        <p>User Agreement<img src="images/jb.png" height="14" width="8" align="right"/></p>
+                    </a>
+                    <i class="list_dt_icon"></i>
+                </dt>
+                <dt class="list_dt">
+                    <span class="_after"></span>
+                    <a href="recharge_protocol.html">
+                        <p>Credit Top Up<img src="images/jb.png" height="14" width="8" align="right"/></p>
+                    </a>
+                    <i class="list_dt_icon"></i>
+                </dt>
+                <dt class="list_dt">
+                    <span class="_after"></span>
+                    <a href="about_us.html">
+                        <p>About Us<img src="images/jb.png" height="14" width="8" align="right"/></p>
+                    </a>
+                    <i class="list_dt_icon"></i>
+                </dt>
+            </dl>
+            <br>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+    $(".list_dt").on("click", function () {
+        $('.list_dd').stop();
+        $(this).siblings("dt").removeAttr("id");
+        if ($(this).attr("id") === "open") {
+            $(this).removeAttr("id").siblings("dd").slideUp();
+        } else {
+            $(this).attr("id", "open").next().slideDown().siblings("dd").slideUp();
+        }
+    });
+
+    /**
+     * @return {string}
+     */
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return "";
+    }
+
+    function lxkf() {
+        var phone = GetQueryString("p");
+        var ua = navigator.userAgent.toLowerCase();
+        if (/micromessenger/.test(ua)) {
+            alert(phone);
+        } else if (/iphone|ipad|ipod/.test(ua)) {
+            window.webkit.messageHandlers.contactUs.postMessage(phone);
+        } else if (/android/.test(ua)) {
+            window.android.contactUs(phone);
+        } else {
+            alert(phone);
+        }
+    }
+</script>
+
+</body>
+</html>
